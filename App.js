@@ -1,15 +1,17 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet, View, Text} from 'react-native';
+
 import AppColors from './app/config/AppColors';
 import AppText from './app/components/AppText';
 import AppButton from './app/components/AppButton';
+import AppScreen from './app/components/AppScreen';
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <AppScreen>
       <AppText size={30}>Hello World</AppText>
       <AppButton title="Login" titleSize={16}/>
-    </View> 
+    </AppScreen>
   );
 };
 
