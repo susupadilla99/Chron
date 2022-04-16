@@ -18,10 +18,12 @@ function AppScreen({children}) {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+    flexDirection: 'column',
     backgroundColor: AppColors.backgroundColor,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
+  button: {
+    width: 300,
+  }
 })
 
 export default AppScreen;
