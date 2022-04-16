@@ -1,17 +1,20 @@
 import React from 'react';
-import { first } from 'react-native'
+import { Text, StyleSheet } from 'react-native'
 
 
-function AppText(props) {
+function AppText({children}) {
   return (
-    <div>
-      
-    </div>
+    <Text style={styles.text}>
+      {children}
+    </Text>
   );
 }
 
 const styles = StyleSheet.create({
-  
+  text: {
+    fontFamily: 'Avenir',
+    fontSize: 20,
+  }
 })
 
 export default AppText;
