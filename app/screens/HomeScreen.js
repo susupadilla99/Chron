@@ -61,11 +61,7 @@ function HomeScreen(props) {
             buttonStyle={{alignSelf:'flex-end', justifyContent:'center', marginRight:25}}
             icon="plus-circle" 
             iconType="material-community" 
-            size={40}
-            colors={[
-              {color: AppColors.lightBlue, offset:"0"},
-              {color: AppColors.darkBlue, offset:"1"},
-            ]} />
+            size={40} />
           </View>
         </View>
         <View style={styles.memoryContainer}>

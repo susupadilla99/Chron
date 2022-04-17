@@ -2,7 +2,9 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Icon } from 'react-native-gradient-icon';
 
-function AppGradientIconButton({icon, iconType, size, onPress, buttonStyle, iconStyle, colors}) {
+import AppColors from '../config/AppColors';
+
+function AppGradientIconButton({icon, iconType, size, onPress, buttonStyle, iconStyle}) {
   return (
     <TouchableOpacity style={[{flex:1},buttonStyle]} onPress={onPress}>
       <Icon
@@ -10,7 +12,10 @@ function AppGradientIconButton({icon, iconType, size, onPress, buttonStyle, icon
         name={icon}
         type={iconType}
         size={size}
-        colors={colors}
+        colors={[
+          {color: AppColors.lightBlue, offset:"0"},
+          {color: AppColors.darkBlue, offset:"1"},
+        ]}
       />
     </TouchableOpacity>
   );
