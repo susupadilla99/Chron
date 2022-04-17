@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { Image, View, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { Icon } from 'react-native-gradient-icon';
 
-import AppScreen from '../components/AppScreen';
 import AppColors from '../config/AppColors';
 import AppGradientScreen from '../components/AppGradientScreen';
 import AppText from '../components/AppText';
+import AppGradientIconButton from '../components/AppGradientIconButton';
+import AppIconButton from '../components/AppIconButton';
 
 function HomeScreen(props) {
   return (
@@ -14,21 +15,30 @@ function HomeScreen(props) {
       
       <View style={styles.topContainer}>
         <View style={styles.topBar}>
-          <View style={{flex:1, borderWidth:1, justifyContent:'center'}}>
-            <MaterialCommunityIcons style={{marginLeft: 30}} name="menu" size={30} color={AppColors.white}/>
+          <View style={{flex:1, justifyContent:'center'}}>
+            <AppIconButton style={{marginLeft: 30}} icon="menu" size={30} color={AppColors.white}/>
           </View>
-          <View style={{flex:1, borderWidth:1, justifyContent: 'center', alignItems: 'center'}}>
+          <View style={{flex:1.5, justifyContent: 'center', alignItems: 'center'}}>
             <AppText style={{fontFamily:"Avenir-Medium"}} size={24} color={AppColors.white}>Chron</AppText>
           </View>
-          <View style={{flex:1, borderWidth:1, justifyContent: 'center', alignItems:'flex-end'}}>
-            <MaterialCommunityIcons style={{marginRight:30}} name="bell" size={30} color={AppColors.white}/>
+          <View style={{flex:1, justifyContent: 'center', alignItems:'flex-end'}}>
+            <AppIconButton style={{marginRight:30}} icon="bell" size={30} color={AppColors.white}/>
           </View>
         </View>
         <View style={styles.imageContainer}>
-          <View style={{flex:1, borderWidth:1}}></View>
-          <View style={{flex:1, borderWidth:1}}></View>
-          <View style={{flex:1, borderWidth:1}}></View>
-          <View style={{flex:1, borderWidth:1}}></View>
+          <View style={{flex:1, alignItems:'center', paddingTop: 40}}>
+            <Image source={require('../assets/Sample1.jpg')} style={styles.image}/>
+          </View>
+          <View style={{flex:1, justifyContent:'flex-start', alignItems:'center', paddingBottom:10}}>
+            <Image source={require('../assets/Sample5.jpg')} style={styles.image}/>
+            <Image source={require('../assets/Sample2.jpg')} style={[styles.image,{marginTop:20}]}/>
+          </View>
+          <View style={{flex:1, paddingTop:20, alignItems:'center'}}>
+            <Image source={require('../assets/Sample3.jpg')} style={styles.image}/>
+          </View>
+          <View style={{flex:1, alignItems:'center' ,paddingTop: 80}}>
+            <Image source={require('../assets/Sample4.jpg')} style={styles.image}/>
+          </View>
         </View>
         <View style={styles.textContainer}>
           <AppText style={{fontFamily:"Avenir-Heavy"}} size={28} color={AppColors.white}>Make everyday</AppText>
@@ -38,7 +48,22 @@ function HomeScreen(props) {
       </View>
 
       <View style={styles.bottomContainer}>
-        <View style={{flex:15, borderWidth:1}}></View>
+        <View style={{flex:15, flexDirection:'row'}}>
+          <View style={{flex: 2, justifyContent: 'center'}}>
+            <AppText style={{marginLeft:25}} size={20}>Recent memories</AppText>
+          </View>
+          <View style={{flex: 1, justifyContent: 'center'}}>
+            <AppGradientIconButton
+            buttonStyle={{alignSelf:'flex-end', justifyContent:'center', marginRight:25}}
+            icon="plus-circle" 
+            iconType="material-community" 
+            size={40}
+            colors={[
+              {color: AppColors.lightBlue, offset:"0"},
+              {color: AppColors.darkBlue, offset:"1"},
+            ]} />
+          </View>
+        </View>
         <View style={{flex:63, borderWidth:1}}></View>
         <View style={styles.bottomBar}>
           <View style={{flex:1, borderWidth:1}}></View>
@@ -54,7 +79,6 @@ function HomeScreen(props) {
 const styles = StyleSheet.create({
   topContainer: {
     flex: 1,
-    borderWidth: 1,
   },
   bottomContainer: {
     flex: 1,
@@ -65,16 +89,18 @@ const styles = StyleSheet.create({
   topBar: {
     flex: 18,
     flexDirection: 'row',
-    borderWidth: 1,
   },
   imageContainer: {
     flex: 51,
     flexDirection: 'row',
-    borderWidth: 1,
+  },
+  image: {
+    width: 80,
+    height: 80,
+    borderRadius: 50,
   },
   textContainer: {
     flex: 30,
-    borderWidth: 1,
     paddingLeft: 25,
   },
   bottomBar: {

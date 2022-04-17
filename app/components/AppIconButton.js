@@ -13,7 +13,8 @@ function AppIconButton({icon, size, onPress, style, color}) {
 
 const styles = StyleSheet.create({
   icon: {
-
+    flex: 1,
+    justifyContent: 'center'
   }
 });
 
