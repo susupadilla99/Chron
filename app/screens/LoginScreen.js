@@ -3,6 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useNavigation } from '@react-navigation/native';
 
 import AppScreen from '../components/AppScreen';
 import AppColors from '../config/AppColors';
@@ -18,7 +19,7 @@ let yupSchema = Yup.object().shape(
   }
 );
 
-function LoginScreen(props) {
+function LoginScreen( {navigation} ) {
   return (
     <AppScreen>
 
@@ -27,7 +28,7 @@ function LoginScreen(props) {
           icon="chevron-left" 
           size={30} 
           color={AppColors.black}
-          onPress={()=>{console.log("Go to welcome screen!")}}
+          onPress={()=>{navigation.navigate("Welcome")}}
           />
       </View>
 

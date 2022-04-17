@@ -1,13 +1,14 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { Icon } from 'react-native-gradient-icon'
+import { View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Icon } from 'react-native-gradient-icon';
+import { useNavigation } from '@react-navigation/native';
 
 import AppScreen from '../components/AppScreen';
 import AppColors from '../config/AppColors';
 import AppText from '../components/AppText';
 
-function RegisterSuccessScreen(props) {
+function RegisterSuccessScreen( {navigation} ) {
   return (
     <AppScreen>
       
@@ -16,24 +17,26 @@ function RegisterSuccessScreen(props) {
       </View>
 
       <View style={styles.bottomContainer}>
-        <View style={styles.container}>
-          <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
-            <AppText size={30}>Success!</AppText>
-            <AppText size={16}>Your account has been created</AppText>
+        <TouchableWithoutFeedback onPress={() => {navigation.navigate("Welcome")}}>
+          <View style={styles.container}>
+            <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
+              <AppText size={30}>Success!</AppText>
+              <AppText size={16}>Your account has been created</AppText>
+            </View>
+            <View style={{flex:1.5, paddingTop: 30, alignItems: 'center'}}>
+              <Icon 
+                style={{alignSelf: 'center'}}
+                name="check-circle" 
+                type="feather" 
+                size={120}
+                colors={[
+                  {color:AppColors.lightBlue, offset: "0", opacity:"1"},
+                  {color:AppColors.darkBlue, offset: "1", opacity:"1"},
+                ]}
+                />
+            </View>
           </View>
-          <View style={{flex:1.5, paddingTop: 30, alignItems: 'center'}}>
-            <Icon 
-              style={{alignSelf: 'center'}}
-              name="check-circle" 
-              type="feather" 
-              size={120}
-              colors={[
-                {color:AppColors.lightBlue, offset: "0", opacity:"1"},
-                {color:AppColors.darkBlue, offset: "1", opacity:"1"},
-              ]}
-              />
-          </View>
-        </View>
+        </TouchableWithoutFeedback>
       </View>
       
     </AppScreen>

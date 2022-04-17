@@ -1,13 +1,14 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import {MaterialCommunityIcons} from '@expo/vector-icons'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native';
 
 import AppScreen from '../components/AppScreen';
 import AppColors from '../config/AppColors';
 import AppText from '../components/AppText';
 import AppButton from '../components/AppButton';
 
-function WelcomeScreen(props) {
+function WelcomeScreen({navigation}) {  
   return (
     <AppScreen>
 
@@ -23,7 +24,7 @@ function WelcomeScreen(props) {
       </View>
 
       <View style={styles.bottomContainer}>
-        <AppButton title="Sign up" titleSize={18} style={styles.button} onPress={() => {console.log("Going to sign in screen!")}}/>
+        <AppButton title="Sign up" titleSize={18} style={styles.button} onPress={() => {navigation.navigate("Register")}}/>
         <View style={styles.orContainer}>
           <View style={styles.line}/>
           <AppText size={12}>or</AppText>
@@ -31,7 +32,7 @@ function WelcomeScreen(props) {
         </View>
         <View style={styles.textContainer}>
           <AppText size={14}>Already have an account: </AppText>
-          <TouchableOpacity onPress={() => {console.log("Going to login screen!")}}>
+          <TouchableOpacity onPress={() => {navigation.navigate("Login")}}>
             <Text style={styles.hyperlink}> Login now</Text>
           </TouchableOpacity>
         </View>

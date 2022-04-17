@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useNavigation } from '@react-navigation/native';
 
 import AppScreen from '../components/AppScreen';
 import AppIconButton from '../components/AppIconButton';
@@ -21,7 +22,7 @@ let yupSchema = Yup.object().shape(
   }
 );
 
-function RegisterScreen(props) {
+function RegisterScreen( {navigation} ) {
   return (
     <AppScreen>
 
@@ -30,7 +31,7 @@ function RegisterScreen(props) {
             style={styles.iconButton} 
             icon="chevron-left" size={30} 
             color={AppColors.black} 
-            onPress={()=>{console.log("Go to welcome screen!")}}
+            onPress={()=>{navigation.navigate("Welcome")}}
             />
           <MaterialCommunityIcons 
             style={styles.logo} 
@@ -49,7 +50,7 @@ function RegisterScreen(props) {
           <View style={{flex:5.2}}>
             <Formik
               initialValues={{email:'', username:'', password:'', cfpassword:''}}
-              onSubmit={ (values) => {console.log(values)} }
+              onSubmit={ () => {navigation.navigate("RegisterSuccess")} }
               validationSchema={yupSchema}
               >
             {({handleChange, handleSubmit, errors, setFieldTouched, touched}) => (
