@@ -26,8 +26,18 @@ function RegisterScreen(props) {
     <AppScreen>
 
         <View style={styles.topContainer}>
-          <AppIconButton style={styles.iconButton} icon="chevron-left" size={30} color={AppColors.black}/>
-          <MaterialCommunityIcons style={styles.logo} name='head-lightbulb' size={60} color={AppColors.lightBlue}/>
+          <AppIconButton 
+            style={styles.iconButton} 
+            icon="chevron-left" size={30} 
+            color={AppColors.black} 
+            onPress={()=>{console.log("Go to welcome screen!")}}
+            />
+          <MaterialCommunityIcons 
+            style={styles.logo} 
+            name='head-lightbulb' 
+            size={60} 
+            color={AppColors.lightBlue}
+            />
         </View>
 
         <View style={styles.midContainer}>

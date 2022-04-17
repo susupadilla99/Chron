@@ -9,6 +9,7 @@ import AppColors from '../config/AppColors';
 import AppTextInput from '../components/AppTextInput';
 import AppButton from '../components/AppButton';
 import AppText from '../components/AppText';
+import AppIconButton from '../components/AppIconButton';
 
 let yupSchema = Yup.object().shape(
   {
@@ -22,7 +23,12 @@ function LoginScreen(props) {
     <AppScreen>
 
       <View style={styles.topContainer}>
-        <MaterialCommunityIcons name="chevron-left" size={30} color={AppColors.black}/>
+        <AppIconButton 
+          icon="chevron-left" 
+          size={30} 
+          color={AppColors.black}
+          onPress={()=>{console.log("Go to welcome screen!")}}
+          />
       </View>
 
       <View style={styles.midContainer}>
