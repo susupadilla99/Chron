@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { Icon } from 'react-native-gradient-icon'
 
 import AppScreen from '../components/AppScreen';
 import AppColors from '../config/AppColors';
 import AppText from '../components/AppText';
-import { clearErrors } from 'react-native/Libraries/LogBox/Data/LogBoxData';
 
 function RegisterSuccessScreen(props) {
   return (
@@ -22,7 +22,16 @@ function RegisterSuccessScreen(props) {
             <AppText size={16}>Your account has been created</AppText>
           </View>
           <View style={{flex:1.5, paddingTop: 30, alignItems: 'center'}}>
-            <MaterialCommunityIcons name="check-circle-outline" size={120} color={AppColors.lightBlue}/>
+            <Icon 
+              style={{alignSelf: 'center'}}
+              name="check-circle" 
+              type="feather" 
+              size={120}
+              colors={[
+                {color:AppColors.lightBlue, offset: "0", opacity:"1"},
+                {color:AppColors.darkBlue, offset: "1", opacity:"1"},
+              ]}
+              />
           </View>
         </View>
       </View>
