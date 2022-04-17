@@ -41,7 +41,7 @@ function LoginScreen( {navigation} ) {
         <View style={{flex:7}}>
           <Formik
             initialValues={{email:'', password:'',}}
-            onSubmit= {(values) => {console.log(values)}}
+            onSubmit= {() => {navigation.navigate("Home")}}
             validationSchema= {yupSchema}
             >
             {({handleChange, handleSubmit, errors, setFieldTouched, touched}) => (

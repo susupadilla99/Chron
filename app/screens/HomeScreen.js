@@ -1,13 +1,17 @@
 import React from 'react';
-import { Image, View, StyleSheet } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { Icon } from 'react-native-gradient-icon';
+import { Image, View, StyleSheet, FlatList } from 'react-native';
 
 import AppColors from '../config/AppColors';
 import AppGradientScreen from '../components/AppGradientScreen';
 import AppText from '../components/AppText';
 import AppGradientIconButton from '../components/AppGradientIconButton';
 import AppIconButton from '../components/AppIconButton';
+import AppMemoryItem from '../components/AppMemoryItem';
+import AppMemoryData from '../data/AppMemoryData';
+import AppCategories from '../data/AppCategories';
+
+const memories = AppMemoryData.memories;
+const categories = AppCategories.categories;
 
 function HomeScreen(props) {
   return (
@@ -48,7 +52,7 @@ function HomeScreen(props) {
       </View>
 
       <View style={styles.bottomContainer}>
-        <View style={{flex:15, flexDirection:'row'}}>
+        <View style={{flex:19, flexDirection:'row'}}>
           <View style={{flex: 2, justifyContent: 'center'}}>
             <AppText style={{marginLeft:25}} size={20}>Recent memories</AppText>
           </View>
@@ -64,7 +68,20 @@ function HomeScreen(props) {
             ]} />
           </View>
         </View>
-        <View style={{flex:63, borderWidth:1}}></View>
+        <View style={styles.memoryContainer}>
+          <FlatList
+            data={memories}
+            keyExtractor={ (memories) => {memories.id.toString}}
+            renderItem={({item}) => 
+              <AppMemoryItem
+                icon={categories.find(category => category.type===item.category).icon}
+                iconSize={45}
+                iconColor={categories.find(category => category.type===item.category).color}
+                title={item.title}
+                subtitle={item.date}
+                />}
+            />
+        </View>
         <View style={styles.bottomBar}>
           <View style={{flex:1, borderWidth:1}}></View>
           <View style={{flex:1, borderWidth:1}}></View>
@@ -87,11 +104,12 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 30,
   },
   topBar: {
-    flex: 18,
+    width: '100%',
+    height: 65,
     flexDirection: 'row',
   },
   imageContainer: {
-    flex: 51,
+    flex: 63,
     flexDirection: 'row',
   },
   image: {
@@ -100,11 +118,15 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   textContainer: {
-    flex: 30,
+    flex: 37,
     paddingLeft: 25,
   },
+  memoryContainer: {
+    flex:81, 
+  },
   bottomBar: {
-    flex:22, 
+    width: "100%" ,
+    height: 85,
     flexDirection: 'row',
     borderWidth:1
   },
