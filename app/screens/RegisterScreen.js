@@ -2,13 +2,20 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { Formik } from 'formik';
+import * as Yup from 'yup';
 
 import AppScreen from '../components/AppScreen';
 import AppColors from '../config/AppColors';
 import AppTextInput from '../components/AppTextInput';
 import AppButton from '../components/AppButton';
+import AppText from '../components/AppText';
 
-
+let yupSchema = Yup.object().shape(
+  {
+    email: Yup.string().required().email().label("Email"),
+    password: Yup.string().required().min(4).max(16).label("Password"),
+  }
+);
 
 function RegisterScreen(props) {
   return (
@@ -28,8 +35,9 @@ function RegisterScreen(props) {
           <Formik
             initialValues={{email:'', password:'',}}
             onSubmit= {(values) => {console.log(values)}}
+            validationSchema= {yupSchema}
             >
-            {({handleChange, handleSubmit}) => (
+            {({handleChange, handleSubmit, errors}) => (
               <>
               <View style={styles.inputContainer}>
                 <AppTextInput 
@@ -38,6 +46,7 @@ function RegisterScreen(props) {
                   textContentType="emailAddress"
                   onChangeText ={handleChange("email")}
                   />
+                <AppText size={12} color="red">{errors.email}</AppText>
               </View>
               <View style={styles.inputContainer}>
                 <AppTextInput 
@@ -46,6 +55,7 @@ function RegisterScreen(props) {
                   textContentType="password"
                   onChangeText ={handleChange("password")}
                   />
+                <AppText size={12} color="red">{errors.password}</AppText>
               </View>
               <View style={styles.buttonContainer}>
                 <AppButton title="Login" titleSize={18} style={styles.button} onPress={handleSubmit}/>
