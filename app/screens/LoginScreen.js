@@ -17,7 +17,7 @@ let yupSchema = Yup.object().shape(
   }
 );
 
-function RegisterScreen(props) {
+function LoginScreen(props) {
   return (
     <AppScreen>
 
@@ -37,25 +37,27 @@ function RegisterScreen(props) {
             onSubmit= {(values) => {console.log(values)}}
             validationSchema= {yupSchema}
             >
-            {({handleChange, handleSubmit, errors}) => (
+            {({handleChange, handleSubmit, errors, setFieldTouched, touched}) => (
               <>
               <View style={styles.inputContainer}>
                 <AppTextInput 
                   placeholder="Email address"
                   keyboardType="email-address"
                   textContentType="emailAddress"
+                  onBlur={ () => {setFieldTouched("email")} }
                   onChangeText ={handleChange("email")}
                   />
-                <AppText size={12} color="red">{errors.email}</AppText>
+                {touched.email && <AppText size={12} color="red">{errors.email}</AppText>}
               </View>
               <View style={styles.inputContainer}>
                 <AppTextInput 
                   placeholder="Password"
                   secureTextEntry={true}
                   textContentType="password"
-                  onChangeText ={handleChange("password")}
+                  onBlur={ () => {setFieldTouched("password")} }
+                  onChangeText={handleChange("password")} 
                   />
-                <AppText size={12} color="red">{errors.password}</AppText>
+                {touched.password && <AppText size={12} color="red">{errors.password}</AppText>}
               </View>
               <View style={styles.buttonContainer}>
                 <AppButton title="Login" titleSize={18} style={styles.button} onPress={handleSubmit}/>
@@ -101,4 +103,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default RegisterScreen;
+export default LoginScreen;
