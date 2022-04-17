@@ -1,17 +1,20 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, StatusBar } from 'react-native';
+import { StyleSheet, StatusBar, View } from 'react-native';
+import Constants from 'expo-constants';
 
 import AppColors from '../config/AppColors';
 
 function AppScreen({children}) {
   return (
-    <SafeAreaView style={styles.screen}>
-      <StatusBar
-        animated={true}
-        backgroundColor={AppColors.backgroundColor}
-        barStyle='dark-content' />
-      {children}
-    </SafeAreaView>
+    <View style={{flex:1, backgroundColor:AppColors.backgroundColor}}>
+      <View style={styles.screen}>
+        <StatusBar
+          animated={true}
+          backgroundColor={AppColors.backgroundColor}
+          barStyle='dark-content' />
+        {children}
+      </View>
+    </View>
   );
 }
 
@@ -20,10 +23,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: AppColors.backgroundColor,
+    marginTop: Constants.statusBarHeight,
   },
-  button: {
-    width: 300,
-  }
 })
 
 export default AppScreen;
