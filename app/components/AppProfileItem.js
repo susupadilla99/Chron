@@ -29,7 +29,7 @@ function AppProfileItem({icon, iconType, title, onPress}) {
 const styles = StyleSheet.create({
   item: {
     width: '100%',
-    height: 80,
+    height: 76,
     flexDirection: 'row',
     alignItems: 'center',
     paddingLeft: 40,

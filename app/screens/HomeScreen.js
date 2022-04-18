@@ -67,7 +67,6 @@ function HomeScreen(props) {
         <View style={styles.memoryContainer}>
           <FlatList
             data={memories}
-            keyExtractor={ (memories) => {memories.id.toString}}
             renderItem={({item}) => 
               <AppMemoryItem
                 icon={categories.find(category => category.type===item.category).icon}
@@ -75,14 +74,11 @@ function HomeScreen(props) {
                 iconColor={categories.find(category => category.type===item.category).color}
                 title={item.title}
                 subtitle={item.date}
+                key={item.id}
                 />}
             />
         </View>
-        <View style={styles.bottomBar}>
-          <View style={{flex:1, borderWidth:1}}></View>
-          <View style={{flex:1, borderWidth:1}}></View>
-          <View style={{flex:1, borderWidth:1}}></View>
-        </View>
+
       </View>
 
     </AppGradientScreen>
@@ -91,10 +87,10 @@ function HomeScreen(props) {
 
 const styles = StyleSheet.create({
   topContainer: {
-    flex: 1,
+    flex: 59,
   },
   bottomContainer: {
-    flex: 1,
+    flex: 41,
     backgroundColor: AppColors.backgroundColor,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,

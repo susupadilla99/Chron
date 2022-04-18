@@ -5,14 +5,12 @@ import AuthNavigator from './app/navigation/AuthNavigator';
 
 import ProfileScreen from './app/screens/ProfileScreen';
 import HomeScreen from './app/screens/HomeScreen';
+import TabNavigator from './app/navigation/TabNavigator';
 
 export default function App() {
   return (
-    <ProfileScreen/>
-    /*
     <NavigationContainer>
       <AuthNavigator/>
     </NavigationContainer>
-    */
   );
 };

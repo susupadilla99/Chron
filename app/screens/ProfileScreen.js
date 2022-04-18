@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 
 import AppGradientScreen from '../components/AppGradientScreen';
 import AppProfileItem from '../components/AppProfileItem';
@@ -18,7 +18,7 @@ function ProfileScreen(props) {
         </AppText>
       </View>
       <View style={styles.bottomContainer}>
-        <View style={{height:130}}/>
+        <View style={{height:110}}/>
         <AppProfileItem 
           icon="appstore1"
           iconType="antdesign"
@@ -35,14 +35,13 @@ function ProfileScreen(props) {
           icon="logout"
           iconType="antdesign"
           title="Logout" />
-        <View style={styles.bottomBar}>
-          <View style={{flex:1, borderWidth:1}}></View>
-          <View style={{flex:1, borderWidth:1}}></View>
-          <View style={{flex:1, borderWidth:1}}></View>
-        </View>
       </View>
       <View style={styles.absoluteContainer}>
-        <View style={styles.profileContainer}></View>
+        <View style={styles.profileContainer}>
+          <Image source={require('../assets/Sample1.jpg')} style={styles.image} />
+          <AppText size={18}>Will Smith</AppText>
+          <AppText size={14}>@oscarslapper</AppText>
+        </View>
       </View>
     </AppGradientScreen>
   );
@@ -50,18 +49,12 @@ function ProfileScreen(props) {
 
 const styles = StyleSheet.create({
   topContainer: {
-    flex:28.6,
+    flex:38.5,
     alignItems: 'center',
   },
   bottomContainer: {
-    flex: 66,
+    flex: 61.4,
     backgroundColor: AppColors.backgroundColor,
-  },
-  bottomBar: {
-    width: "100%" ,
-    height: 85,
-    flexDirection: 'row',
-    borderWidth:1
   },
   absoluteContainer: {
     justifyContent:'center',
@@ -74,11 +67,21 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 30,
     backgroundColor: AppColors.white,
-    marginTop: 130,
+    marginTop: 160,
     shadowOffset: {width:1, height:1},
     shadowRadius: 5,
     shadowOpacity: 0.2,
-  }
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    borderWidth: 2,
+    borderColor: AppColors.darkGray,
+    marginBottom: 15,
+  },
 });
 
 export default ProfileScreen;
