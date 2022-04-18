@@ -1,17 +1,18 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { Swipeable } from 'react-native-gesture-handler';
 
-import AppCategoryColors from '../config/AppCategoryColors';
 import AppColors from '../config/AppColors';
 import AppCategories from '../data/AppCategories';
 import AppText from './AppText';
 
 const categories = AppCategories.categories;
 
-function AppMemoryCard({category, title, subtitle}) {
+function AppMemoryCard({category, title, subtitle, onPress, onSwipeLeft}) {
   return (
-    <TouchableOpacity style={styles.card}>
+    <Swipeable renderRightActions={onSwipeLeft}>
+    <TouchableOpacity style={styles.card} onPress={onPress}>
       <View style={[styles.tint,{backgroundColor: categories.find(x => x.type===category).color}]}/>
       <View style={styles.container}>
         <View style={styles.category}>
@@ -27,6 +28,7 @@ function AppMemoryCard({category, title, subtitle}) {
         <AppText style={{marginTop:5}} size={12} color={AppColors.darkGray}>{subtitle}</AppText>
       </View>
     </TouchableOpacity>
+    </Swipeable>
   );
 }
 

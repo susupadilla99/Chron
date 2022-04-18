@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, View, FlatList, TouchableOpacity, TouchableHighlight } from 'react-native';
 import { Icon } from 'react-native-gradient-icon';
 
@@ -8,10 +8,20 @@ import AppIconButton from '../components/AppIconButton';
 import AppText from '../components/AppText';
 import AppMemoryCard from '../components/AppMemoryCard';
 import AppMemoryData from '../data/AppMemoryData';
+import AppCategoryColors from '../config/AppCategoryColors';
 
-const memories = AppMemoryData.memories;
+
 
 function MemoryScreen(props) {
+
+  const [refreshing, setRefreshing] = useState(false);
+  const [memories, setMemories] = useState(AppMemoryData.memories);
+  const deleteMemories = (memory) => {
+    const temp = memories.filter(item => item.id !== memory.id);
+    setMemories(temp);
+    
+  };
+
   return (
     <AppGradientScreen gradientEnd={{x:1, y:0.3}}>
 
@@ -39,11 +49,25 @@ function MemoryScreen(props) {
           <FlatList 
             style={{width: 332}}
             data={memories}
+            refreshing={refreshing}
+            onRefresh={() => setMemories(AppMemoryData.memories)}
             renderItem={({item}) => (
               <AppMemoryCard 
                 category={item.category}
                 title={item.title}
-                subtitle={item.subtitle}
+                subtitle={item.date}
+                onPress={()=>console.log("Going to info screen")}
+                onSwipeLeft={() => (
+                  <View style={styles.deleteBox}>
+                    <AppIconButton
+                      style={{alignSelf: 'center'}}
+                      icon="trash-can"
+                      iconType="material-community"
+                      size={50}
+                      color={AppCategoryColors.red}
+                      onPress={()=>deleteMemories(item)} />
+                  </View>
+                )}
                 />
             )}
             ItemSeparatorComponent={() =>
@@ -107,6 +131,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  deleteBox: {
+    width:75,
+    justifyContent:'center',
+  }
 });
 
 export default MemoryScreen;
