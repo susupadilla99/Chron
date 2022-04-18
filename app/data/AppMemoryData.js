@@ -1,10 +1,3 @@
-import {useState} from 'react'
-
-const AppMemoryData = () => {
-  var [memories,setMemories] = useState();
-  
-}
-
 export default {
 
   memories: [

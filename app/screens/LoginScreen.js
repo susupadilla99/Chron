@@ -19,6 +19,25 @@ let yupSchema = Yup.object().shape(
   }
 );
 
+const users = [
+  {
+    username: "oscarslapper",
+    email: "getmywifenameoutofyomouth@gmail.com",
+    password: "password",
+  },
+  {
+    username: "hubert",
+    email: "hubert@mq.edu.au",
+    password: "1234",
+  }
+];
+
+const validateUser = ({email, password}) => {
+  return (
+    users.find(x => x.email===email&&x.password===password)!==undefined
+  )
+};
+
 function LoginScreen( {navigation} ) {
   return (
     <AppScreen>
@@ -41,16 +60,26 @@ function LoginScreen( {navigation} ) {
         <View style={{flex:7}}>
           <Formik
             initialValues={{email:'', password:'',}}
-            onSubmit= {() => {navigation.navigate("Tab")}}
+            onSubmit= {(values, {resetForm}) => {
+              if (validateUser(values)) {
+                console.log(values);
+                resetForm();
+                navigation.navigate("Tab");
+              } else {
+                resetForm();
+                alert("Invalid username or password");
+              }
+              }}
             validationSchema= {yupSchema}
             >
-            {({handleChange, handleSubmit, errors, setFieldTouched, touched}) => (
+            {({values, handleChange, handleSubmit, errors, setFieldTouched, touched}) => (
               <>
               <View style={styles.inputContainer}>
                 <AppTextInput 
                   placeholder="Email address"
                   keyboardType="email-address"
                   textContentType="emailAddress"
+                  value={values.email}
                   onBlur={ () => {setFieldTouched("email")} }
                   onChangeText ={handleChange("email")}
                   />
@@ -61,6 +90,7 @@ function LoginScreen( {navigation} ) {
                   placeholder="Password"
                   secureTextEntry={true}
                   textContentType="password"
+                  value={values.password}
                   onBlur={ () => {setFieldTouched("password")} }
                   onChangeText={handleChange("password")} 
                   />

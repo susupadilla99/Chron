@@ -5,14 +5,15 @@ import AuthNavigator from './app/navigation/AuthNavigator';
 
 import MemoryScreen from './app/screens/MemoryScreen';
 import LoginScreen from './app/screens/LoginScreen';
+import RegisterScreen from './app/screens/RegisterScreen';
 
 export default function App() {
   return (
-    <LoginScreen/>
-    /*
+    //<LoginScreen/>
+   
     <NavigationContainer>
       <AuthNavigator/>
     </NavigationContainer>
-    */
+   
   );
 };
