@@ -1,12 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import AppGradientScreen from '../components/AppGradientScreen';
 import AppProfileItem from '../components/AppProfileItem';
 import AppText from '../components/AppText';
 import AppColors from '../config/AppColors';
 
-function ProfileScreen(props) {
+function ProfileScreen({navigation}) {
   return (
     <AppGradientScreen gradientEnd={{x:1, y: 0.4}}>
       <View style={styles.topContainer}>
@@ -34,7 +35,8 @@ function ProfileScreen(props) {
         <AppProfileItem 
           icon="logout"
           iconType="antdesign"
-          title="Logout" />
+          title="Logout"
+          onPress={()=>{navigation.navigate("Auth")}} />
       </View>
       <View style={styles.absoluteContainer}>
         <View style={styles.profileContainer}>
