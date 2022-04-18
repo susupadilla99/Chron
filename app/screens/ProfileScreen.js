@@ -36,7 +36,7 @@ function ProfileScreen({navigation}) {
           icon="logout"
           iconType="antdesign"
           title="Logout"
-          onPress={()=>{navigation.navigate("Auth")}} />
+          onPress={()=>{navigation.navigate("Welcome")}} />
       </View>
       <View style={styles.absoluteContainer}>
         <View style={styles.profileContainer}>

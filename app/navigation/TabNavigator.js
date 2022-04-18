@@ -2,12 +2,12 @@ import React from 'react';
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Icon } from 'react-native-gradient-icon';
+import { useNavigation } from '@react-navigation/native';
 
 import AppColors from '../config/AppColors';
 import HomeScreen from '../screens/HomeScreen';
 import MemoryScreen from '../screens/MemoryScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import ProfileNavigator from './ProfileNavigator';
 
 
 const AppTab = createBottomTabNavigator();
@@ -51,8 +51,8 @@ const TabNavigator = () => (
           />),
       }} />
     <AppTab.Screen 
-      name="ProfileStack" 
-      component={ProfileNavigator} 
+      name="Profile" 
+      component={ProfileScreen} 
       options={{
         headerShown:false,
         tabBarShowLabel:false,
