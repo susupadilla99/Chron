@@ -9,13 +9,16 @@ import AppMemoryCard from '../components/AppMemoryCard';
 import AppMemoryData from '../data/AppMemoryData';
 import AppCategoryColors from '../config/AppCategoryColors';
 import AppCategoryPicker from '../components/AppCategoryPicker';
+import AppCategories from '../data/AppCategories';
 
-
+const categories = AppCategories.categories;
 
 function MemoryScreen(props) {
 
   const [refreshing, setRefreshing] = useState(false);
   const [memories, setMemories] = useState(AppMemoryData.memories);
+  const [currentCategory, setCurrentCategory] = useState(categories[5]);
+
   const deleteMemories = (memory) => {
     const temp = memories.filter(item => item.id !== memory.id);
     setMemories(temp);
@@ -28,7 +31,12 @@ function MemoryScreen(props) {
       <View style={styles.topContainer}>
         <View style={styles.topBar}>
           <View style={{flex:1, justifyContent:'center'}}>
-            <AppIconButton style={{marginLeft: 30}} icon="menu" size={30} color={AppColors.white}/>
+            <AppIconButton 
+              style={{marginLeft: 30}} 
+              icon="menu" 
+              size={30} 
+              color={AppColors.white} 
+              onPress={()=>{console.log(currentCategory)}} />
           </View>
           <View style={{flex:1.5, justifyContent: 'center', alignItems: 'center'}}>
             <AppText style={{fontFamily:"Avenir-Medium"}} size={24} color={AppColors.white}>Chron</AppText>
@@ -78,7 +86,9 @@ function MemoryScreen(props) {
       </View>
 
       <View style={styles.absoluteContainer}>
-        <AppCategoryPicker category="All memories"/>
+        <AppCategoryPicker 
+          category={currentCategory} 
+          onSelectItem={(item) => setCurrentCategory(item)} />
       </View>
 
     </AppGradientScreen>

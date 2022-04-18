@@ -13,7 +13,7 @@ import { FlatList } from 'react-native-gesture-handler';
 
 const categories = AppCategories.categories;
 
-function AppCategoryPicker({category, ...otherProp}) {
+function AppCategoryPicker({category, onSelectItem, ...otherProp}) {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -22,11 +22,11 @@ function AppCategoryPicker({category, ...otherProp}) {
       <View style={styles.picker}>
         <MaterialCommunityIcons 
           style={{marginRight: 15}}
-          name={categories.find(x=>x.type===category).icon}
+          name={categories.find(x=>x.id===category.id).icon}
           size={40}
-          color={categories.find(x=>x.type===category).color} />
-
-        <AppText style={{fontFamily:'Avenir-Heavy'}} size={24}>All memories</AppText>
+          color={categories.find(x=>x.id===category.id).color} 
+          />
+        <AppText style={{fontFamily:'Avenir-Heavy'}} size={24}>{category.type}</AppText>
       </View>
     </TouchableHighlight>
 
@@ -44,7 +44,13 @@ function AppCategoryPicker({category, ...otherProp}) {
           <FlatList
             data={categories}
             renderItem={({item})=>(
-              <AppCategoryItem category={item} key={item.id} />
+              <AppCategoryItem 
+                category={item} 
+                key={item.id} 
+                onPress={() => {
+                  onSelectItem(item);
+                  setModalVisible(!modalVisible);
+                }} />
             )}
             />
         </View>
