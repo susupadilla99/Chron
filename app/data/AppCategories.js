@@ -1,4 +1,5 @@
 import AppCategoryColors from "../config/AppCategoryColors";
+import AppColors from "../config/AppColors";
 
 export default {
   categories: [
@@ -31,6 +32,12 @@ export default {
       type: 'Work',
       icon: 'briefcase',
       color: AppCategoryColors.orange,
-    }
+    },
+    {
+      id: 6,
+      type: 'All memories',
+      icon: 'expand-all',
+      color: AppColors.darkGray,
+    },
   ]
 }

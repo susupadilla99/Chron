@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import { StyleSheet, View, FlatList, TouchableOpacity, TouchableHighlight } from 'react-native';
-import { Icon } from 'react-native-gradient-icon';
 
 import AppColors from '../config/AppColors';
 import AppGradientScreen from '../components/AppGradientScreen';
@@ -9,6 +8,7 @@ import AppText from '../components/AppText';
 import AppMemoryCard from '../components/AppMemoryCard';
 import AppMemoryData from '../data/AppMemoryData';
 import AppCategoryColors from '../config/AppCategoryColors';
+import AppCategoryPicker from '../components/AppCategoryPicker';
 
 
 
@@ -78,18 +78,7 @@ function MemoryScreen(props) {
       </View>
 
       <View style={styles.absoluteContainer}>
-        <TouchableHighlight style={{borderRadius:20}} onPress={() => console.log("Hi mom!")}>
-          <View style={styles.categoryContainer}>
-            <Icon
-              style={{alignSelf:'center', marginRight: 20}}
-              name="appstore1"
-              type="antdesign"
-              size={40}
-              color={AppColors.darkGray}
-            />
-            <AppText style={{fontFamily:'Avenir-Heavy'}} size={24}>All memories</AppText>
-          </View>
-        </TouchableHighlight>
+        <AppCategoryPicker category="All memories"/>
       </View>
 
     </AppGradientScreen>
@@ -118,18 +107,6 @@ const styles = StyleSheet.create({
     alignItems:'center',
     alignSelf:'center', 
     position:'absolute'
-  },
-  categoryContainer: {
-    width: 330,
-    height: 75,
-    flexDirection: 'row',
-    borderRadius: 20,
-    backgroundColor: AppColors.white,
-    shadowOffset: {width:1, height:1},
-    shadowRadius: 5,
-    shadowOpacity: 0.2,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   deleteBox: {
     width:75,

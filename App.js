@@ -9,11 +9,11 @@ import RegisterScreen from './app/screens/RegisterScreen';
 
 export default function App() {
   return (
-    //<LoginScreen/>
-   
+    <MemoryScreen/>
+    /*
     <NavigationContainer>
       <AuthNavigator/>
     </NavigationContainer>
-   
+    */
   );
 };
