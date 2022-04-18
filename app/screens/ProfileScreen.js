@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     backgroundColor: AppColors.backgroundColor,
   },
   absoluteContainer: {
-    justifyContent:'center',
+    marginTop: 160,
     alignItems:'center',
     alignSelf:'center', 
     position:'absolute'
@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 30,
     backgroundColor: AppColors.white,
-    marginTop: 160,
     shadowOffset: {width:1, height:1},
     shadowRadius: 5,
     shadowOpacity: 0.2,

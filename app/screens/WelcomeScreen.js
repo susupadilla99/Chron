@@ -44,12 +44,12 @@ function WelcomeScreen({navigation}) {
 
 const styles = StyleSheet.create({
   topContainer: {
-    flex: 2,
+    flex: 1.5,
     padding: 40,
     justifyContent: 'center',
   },
   midContainer: {
-    flex: 5,
+    flex: 4.5,
     paddingTop: 100,
     paddingLeft: 40,
   },

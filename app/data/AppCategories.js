@@ -4,31 +4,31 @@ export default {
   categories: [
     {
       id: 1,
-      type: 'vacation',
+      type: 'Vacation',
       icon: 'beach',
       color: AppCategoryColors.yellow,
     },
     {
       id: 2,
-      type: 'holiday',
+      type: 'Holiday',
       icon: 'star',
       color: AppCategoryColors.green,
     },
     {
       id: 3,
-      type: 'love',
+      type: 'Love',
       icon: 'cards-heart',
       color: AppCategoryColors.red,
     },
     {
       id: 4,
-      type: 'celebration',
+      type: 'Celebration',
       icon: 'party-popper',
       color: AppCategoryColors.pink,
     },
     {
       id: 5,
-      type: 'work',
+      type: 'Work',
       icon: 'briefcase',
       color: AppCategoryColors.orange,
     }
