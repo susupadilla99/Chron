@@ -11,16 +11,20 @@ import AppColors from '../config/AppColors';
 import AppText from '../components/AppText';
 import AppTextInput from '../components/AppTextInput';
 import AppButton from '../components/AppButton';
+import AppAccountManager from '../data/AppAccountManager';
 
 
 let yupSchema = Yup.object().shape(
   {
+    name: Yup.string().required().min(1).max(60).label("Full Name"),
     email: Yup.string().required().email().label("Email"),
     username: Yup.string().required().min(8).max(40).label("Username"),
     password: Yup.string().required().min(4).max(12).label("Password"),
     cfpassword: Yup.string().required().oneOf([Yup.ref("password"),null],"Passwords must match").label("Confirm password"),
   }
 );
+
+const accountManager = AppAccountManager.getInstance();
 
 function RegisterScreen( {navigation} ) {
   return (
@@ -49,12 +53,24 @@ function RegisterScreen( {navigation} ) {
           <View style={{flex:0.5}}/>
           <View style={{flex:5.2}}>
             <Formik
-              initialValues={{email:'', username:'', password:'', cfpassword:''}}
-              onSubmit={ () => {navigation.navigate("RegisterSuccess")} }
+              initialValues={{email:'', username:'', name:'', password:'', cfpassword:''}}
+              onSubmit={ (values) => {
+                accountManager.addUser(values);
+                navigation.navigate("RegisterSuccess");
+              }}
               validationSchema={yupSchema}
               >
             {({handleChange, handleSubmit, errors, setFieldTouched, touched}) => (
               <>
+              <View style={styles.inputContainer}>
+                <AppTextInput
+                  placeholder="Full name"
+                  textContentType="name"
+                  onBlur={()=>{setFieldTouched("name")}}
+                  onChangeText={handleChange("name")}
+                  />
+                {touched.name && <AppText size={12} color="red">{errors.name}</AppText>}
+              </View>
               <View style={styles.inputContainer}>
                 <AppTextInput
                   placeholder="Email address"
@@ -135,11 +151,11 @@ const styles = StyleSheet.create({
   inputContainer: {
     flex:0.6,
     alignItems: 'center',
-    paddingTop: 30,
+    paddingTop: 25,
   },
   buttonContainer: {
     flex:1.2,
-    paddingTop: 20,
+    paddingTop: 30,
     alignItems: 'center',
   },
   button: {

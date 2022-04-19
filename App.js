@@ -11,7 +11,7 @@ import MemoryInfoScreen from './app/screens/MemoryInfoScreen';
 
 export default function App() {
   return (
-    //<MemoryInfoScreen/>
+    //<RegisterScreen/>
     
     <NavigationContainer>
       <AuthNavigator/>

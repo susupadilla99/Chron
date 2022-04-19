@@ -11,6 +11,9 @@ import AppTextInput from '../components/AppTextInput';
 import AppButton from '../components/AppButton';
 import AppText from '../components/AppText';
 import AppIconButton from '../components/AppIconButton';
+import DataManager from '../data/AppDataManager';
+import AppAccountManager from '../data/AppAccountManager';
+import AppDataManager from '../data/AppDataManager';
 
 let yupSchema = Yup.object().shape(
   {
@@ -19,23 +22,18 @@ let yupSchema = Yup.object().shape(
   }
 );
 
-const users = [
-  {
-    username: "oscarslapper",
-    email: "getmywifenameoutofyomouth@gmail.com",
-    password: "password",
-  },
-  {
-    username: "hubert",
-    email: "hubert@mq.edu.au",
-    password: "1234",
-  }
-];
+const createUser = (email) => {
+  let accountManager = AppAccountManager.getInstance();
+  let dataManager = AppDataManager.getInstance();
+  let userID = accountManager.getUser({email}).username;
+  dataManager.setUserID(userID);
+
+  console.log(dataManager);
+};
 
 const validateUser = ({email, password}) => {
-  return (
-    users.find(x => x.email===email&&x.password===password)!==undefined
-  )
+  let accountManager = AppAccountManager.getInstance();
+  return accountManager.isValidCredentials({email, password});
 };
 
 function LoginScreen( {navigation} ) {
@@ -62,8 +60,8 @@ function LoginScreen( {navigation} ) {
             initialValues={{email:'', password:'',}}
             onSubmit= {(values, {resetForm}) => {
               if (validateUser(values)) {
-                console.log(values);
                 resetForm();
+                createUser(values.email);
                 navigation.navigate("Tab");
               } else {
                 resetForm();
