@@ -1,18 +1,25 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import AppGradientScreen from '../components/AppGradientScreen';
 import AppIconButton from '../components/AppIconButton';
 import AppColors from '../config/AppColors';
 import AppText from '../components/AppText';
 
-function MemoryInfoScreen(props) {
+function MemoryInfoScreen({navigation, route}) {
   return (
     <AppGradientScreen gradientEnd={{x:1, y:0.2}}>
+
       <View style={styles.topContainer}>
         <View style={styles.topBar}>
           <View style={{flex:1, justifyContent:'center'}}>
-            <AppIconButton style={{marginLeft: 30}} icon="chevron-left" size={40} color={AppColors.white}/>
+            <AppIconButton 
+              style={{marginLeft: 30}} 
+              icon="chevron-left" 
+              size={40} 
+              color={AppColors.white} 
+              onPress={()=>{navigation.goBack()}} />
           </View>
           <View style={{flex:1.5, justifyContent: 'center', alignItems: 'center'}}>
             <AppText style={{fontFamily:"Avenir-Medium"}} size={24} color={AppColors.white}>Chron</AppText>
@@ -22,8 +29,17 @@ function MemoryInfoScreen(props) {
           </View>
         </View>
       </View>
-      <View style={styles.midContainer}></View>
-      <View style={styles.bottomContainer}></View>
+
+      <View style={styles.midContainer}>
+        <Image style={styles.image} />
+      </View>
+      
+      <View style={styles.bottomContainer}>
+        <View style={styles.infoContainer}>
+
+        </View>
+      </View>
+    
     </AppGradientScreen>
   );
 }
@@ -42,10 +58,21 @@ const styles = StyleSheet.create({
     flex: 1.8,
     borderWidth: 1,
   },
+  image: {
+    height: 200,
+  },  
   bottomContainer: {
-    flex: 5,
+    borderWidth: 5,
+    width:
+    flexDirection: 'column-reverse',
+    position: 'absolute',
+  },
+  infoContainer: {
+    flex: 1,
+    backgroundColor: AppColors.backgroundColor,
+    borderTopRightRadius: 60,
     borderWidth: 1,
-  }
+  },
 })
 
 export default MemoryInfoScreen;

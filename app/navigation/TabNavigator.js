@@ -8,6 +8,7 @@ import AppColors from '../config/AppColors';
 import HomeScreen from '../screens/HomeScreen';
 import MemoryScreen from '../screens/MemoryScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import MemoryNavigator from './MemoryNavigator';
 
 
 const AppTab = createBottomTabNavigator();
@@ -15,8 +16,8 @@ const AppTab = createBottomTabNavigator();
 const TabNavigator = () => (
   <AppTab.Navigator initialRouteName="Home">
     <AppTab.Screen 
-      name="Memory" 
-      component={MemoryScreen} 
+      name="MemoryNavigator" 
+      component={MemoryNavigator} 
       options={{
         headerShown:false,
         tabBarShowLabel:false,

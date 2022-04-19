@@ -8,6 +8,7 @@ import RegisterScreen from '../screens/RegisterScreen';
 import RegisterSuccessScreen from '../screens/RegisterSuccessScreen';
 import HomeScreen from '../screens/HomeScreen';
 import TabNavigator from './TabNavigator';
+import MemoryInfoScreen from '../screens/MemoryInfoScreen';
 
 const AppStack = createStackNavigator();
 

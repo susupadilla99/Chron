@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { StyleSheet, View, FlatList, TouchableOpacity, TouchableHighlight } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import AppColors from '../config/AppColors';
 import AppGradientScreen from '../components/AppGradientScreen';
@@ -13,7 +14,7 @@ import AppCategories from '../data/AppCategories';
 
 const categories = AppCategories.categories;
 
-function MemoryScreen(props) {
+function MemoryScreen({navigation}) {
 
   const [refreshing, setRefreshing] = useState(false);
   const [memories, setMemories] = useState(AppMemoryData.memories);
@@ -64,7 +65,7 @@ function MemoryScreen(props) {
                 category={item.category}
                 title={item.title}
                 subtitle={item.date}
-                onPress={()=>console.log("Going to info screen")}
+                onPress={()=>{navigation.navigate("MemoryInfo")}}
                 onSwipeLeft={() => (
                   <View style={styles.deleteBox}>
                     <AppIconButton
