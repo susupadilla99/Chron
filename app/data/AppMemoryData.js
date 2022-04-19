@@ -68,7 +68,7 @@ export default {
       userID: 'huberthartan',
       id: 8,
       category: 'Vacation',
-      title: 'Chill at Sudney',
+      title: 'Chill at Sydney',
       date: '12/8/2021',
       image: 'https://images.freeimages.com/images/small-previews/2a0/sydney-opera-house-1452627.jpg',
       content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec posuere nibh elit, sit amet congue nisi consequat sed. Donec ligula ipsum, ullamcorper et venenatis eget, volutpat elementum dui. Suspendisse tristique dictum sapien nec varius. Nam nisl velit, faucibus quis volutpat et, rutrum at nibh. Duis et enim id leo vehicula semper in euismod elit. Quisque et ultrices mauris, eleifend aliquam nisi. Quisque vel est a odio ornare vehicula. Donec nec ornare ipsum.',

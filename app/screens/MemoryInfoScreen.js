@@ -102,7 +102,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: AppColors.backgroundColor,
     borderTopRightRadius: 60,
-    borderWidth: 1,
   },
   topInfoContainer: {
     height: 55,

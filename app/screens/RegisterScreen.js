@@ -13,7 +13,6 @@ import AppTextInput from '../components/AppTextInput';
 import AppButton from '../components/AppButton';
 import AppAccountManager from '../data/AppAccountManager';
 
-
 let yupSchema = Yup.object().shape(
   {
     name: Yup.string().required().min(1).max(60).label("Full Name"),

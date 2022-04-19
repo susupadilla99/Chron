@@ -2,7 +2,7 @@ import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 import AppColors from '../config/AppColors';
 
-function AppTextInput({...otherProp}) {
+function AppTextInput({lineStyle,...otherProp}) {
   return (
     <View style={styles.container}>
       <TextInput 
@@ -10,7 +10,7 @@ function AppTextInput({...otherProp}) {
         autoCapitalize='none'
         autoCorrect={false} 
         {...otherProp}/>
-      <View style={styles.line}/>
+      <View style={[styles.line,lineStyle]}/>
     </View>
   );
 }
