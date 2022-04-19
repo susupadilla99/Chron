@@ -39,8 +39,26 @@ export default class AppDataManager {
     }
     this.maxId++;
     this.memories.push(newMemory);
-    //this.printMemories();
   }
+
+  editMemory(newMemory) {
+    this.memories=this.memories.filter(item=>item.id!==newMemory.id);
+    let editedMemory = {
+      userID: newMemory.userID,
+      category: newMemory.category,
+      title: newMemory.title,
+      date: newMemory.date,
+      image: newMemory.image,
+      content: newMemory.content,
+      id: newMemory.id,
+    }
+    this.memories.push(editedMemory);
+    this.memories.sort((item1, item2)=>{
+      return item1.id-item2.id;
+    });
+    this.printMemories();
+  }
+   
 
   deleteMemory(id) {
     this.memories = this.memories.filter(memory=>memory.id!=id);
@@ -50,6 +68,7 @@ export default class AppDataManager {
     this.memories.forEach(item=>{
       console.log(item.title+" - "+item.userID);
     });
+    console.log('------------');
   }
 
 }
