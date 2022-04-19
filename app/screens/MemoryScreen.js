@@ -65,7 +65,7 @@ function MemoryScreen({navigation}) {
                 category={item.category}
                 title={item.title}
                 subtitle={item.date}
-                onPress={()=>{navigation.navigate("MemoryInfo")}}
+                onPress={()=>{navigation.navigate("MemoryInfo", {memory: item})}}
                 onSwipeLeft={() => (
                   <View style={styles.deleteBox}>
                     <AppIconButton
