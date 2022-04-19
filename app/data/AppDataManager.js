@@ -5,6 +5,7 @@ export default class AppDataManager {
   userID = "";
 
   memories = AppMemoryData.memories;
+  maxId = 12;
 
   static getInstance() {
     if (AppDataManager.myInstance == null){
@@ -21,6 +22,17 @@ export default class AppDataManager {
     this.userID = id;
   }
 
-  
+  getData() {
+    let retVal = this.memories.filter(memory=>memory.userID===this.userID);
+    return retVal;
+  }
+
+  addMemory({userID, category, title, date, image, content}) {
+
+  }
+
+  deleteMemory(id) {
+    this.memories = this.memories.filter(memory=>memory.id!=id);
+  }
 
 }

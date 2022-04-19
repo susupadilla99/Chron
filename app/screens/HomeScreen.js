@@ -7,13 +7,14 @@ import AppText from '../components/AppText';
 import AppGradientIconButton from '../components/AppGradientIconButton';
 import AppIconButton from '../components/AppIconButton';
 import AppMemoryItem from '../components/AppMemoryItem';
-import AppMemoryData from '../data/AppMemoryData';
 import AppCategories from '../data/AppCategories';
-
-const memories = AppMemoryData.memories;
-const categories = AppCategories.categories;
+import AppDataManager from '../data/AppDataManager';
 
 function HomeScreen(props) {
+
+  const memories = AppDataManager.getInstance().getData()!=undefined?AppDataManager.getInstance().getData():{};
+  const categories = AppCategories.categories;
+
   return (
     <AppGradientScreen gradientEnd={{x:1, y:0.7}}>
       
@@ -31,17 +32,17 @@ function HomeScreen(props) {
         </View>
         <View style={styles.imageContainer}>
           <View style={{flex:1, alignItems:'center', paddingTop: 40}}>
-            <Image source={require('../assets/Sample1.jpg')} style={styles.image}/>
+            <Image source={{uri: memories[0]!=undefined?memories[0].image:'https://www.colorhexa.com/4fb1ff.png'}} style={styles.image}/>
           </View>
           <View style={{flex:1, justifyContent:'flex-start', alignItems:'center', paddingBottom:10}}>
-            <Image source={require('../assets/Sample5.jpg')} style={styles.image}/>
-            <Image source={require('../assets/Sample2.jpg')} style={[styles.image,{marginTop:20}]}/>
+            <Image source={{uri: memories[1]!=undefined?memories[1].image:'https://www.colorhexa.com/4fb1ff.png'}} style={styles.image}/>
+            <Image source={{uri: memories[2]!=undefined?memories[2].image:'https://www.colorhexa.com/4fb1ff.png'}} style={[styles.image,{marginTop:20}]}/>
           </View>
           <View style={{flex:1, paddingTop:20, alignItems:'center'}}>
-            <Image source={require('../assets/Sample3.jpg')} style={styles.image}/>
+            <Image source={{uri: memories[3]!=undefined?memories[3].image:'https://www.colorhexa.com/4fb1ff.png'}} style={styles.image}/>
           </View>
           <View style={{flex:1, alignItems:'center' ,paddingTop: 80}}>
-            <Image source={require('../assets/Sample4.jpg')} style={styles.image}/>
+            <Image source={{uri: memories[4]!=undefined?memories[4].image:'https://www.colorhexa.com/4fb1ff.png'}} style={styles.image}/>
           </View>
         </View>
         <View style={styles.textContainer}>

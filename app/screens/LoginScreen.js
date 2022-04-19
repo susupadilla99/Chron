@@ -27,8 +27,6 @@ const createUser = (email) => {
   let dataManager = AppDataManager.getInstance();
   let userID = accountManager.getUser({email}).username;
   dataManager.setUserID(userID);
-
-  console.log(dataManager);
 };
 
 const validateUser = ({email, password}) => {

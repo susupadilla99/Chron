@@ -6,8 +6,17 @@ import AppGradientScreen from '../components/AppGradientScreen';
 import AppProfileItem from '../components/AppProfileItem';
 import AppText from '../components/AppText';
 import AppColors from '../config/AppColors';
+import AppAccountManager from '../data/AppAccountManager';
+import AppDataManager from '../data/AppDataManager';
+
+
 
 function ProfileScreen({navigation}) {
+  
+  const userID = AppDataManager.getInstance().getUserID(); 
+  console.log(userID);
+  const userData =  AppAccountManager.getInstance().getUserData({userID});
+
   return (
     <AppGradientScreen gradientEnd={{x:1, y: 0.4}}>
       <View style={styles.topContainer}>
@@ -40,9 +49,11 @@ function ProfileScreen({navigation}) {
       </View>
       <View style={styles.absoluteContainer}>
         <View style={styles.profileContainer}>
-          <Image source={require('../assets/Sample1.jpg')} style={styles.image} />
-          <AppText size={18}>Will Smith</AppText>
-          <AppText size={14}>@oscarslapper</AppText>
+          <Image source={{
+            uri: (userData.profileImage!=undefined)&&(userData.profileImage!='')?userData.profileImage:'https://cdn1.vectorstock.com/i/thumb-large/22/05/male-profile-picture-vector-1862205.jpg'}} 
+            style={styles.image} />
+          <AppText size={18}>{userData.name}</AppText>
+          <AppText size={14}>@{userData.username}</AppText>
         </View>
       </View>
     </AppGradientScreen>

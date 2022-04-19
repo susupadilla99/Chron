@@ -1,5 +1,4 @@
 import AppAccountsData from './AppAccountsData';
-import AppMemoryData from './AppMemoryData';
 
 export default class AppAccountManager {
   static myInstance = null;
@@ -30,6 +29,10 @@ export default class AppAccountManager {
 
   getUser({email}) {
     return this.accounts.find(user=>user.email===email);
+  }
+
+  getUserData({userID}) {
+    return this.accounts.find(user=>user.username===userID);
   }
 
 }

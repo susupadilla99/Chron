@@ -11,20 +11,15 @@ import AppMemoryData from '../data/AppMemoryData';
 import AppCategoryColors from '../config/AppCategoryColors';
 import AppCategoryPicker from '../components/AppCategoryPicker';
 import AppCategories from '../data/AppCategories';
+import AppDataManager from '../data/AppDataManager';
 
 const categories = AppCategories.categories;
 
 function MemoryScreen({navigation}) {
 
   const [refreshing, setRefreshing] = useState(false);
-  const [memories, setMemories] = useState(AppMemoryData.memories);
-  const [currentCategory, setCurrentCategory] = useState(categories[5]);
-
-  const deleteMemories = (memory) => {
-    const temp = memories.filter(item => item.id !== memory.id);
-    setMemories(temp);
-    
-  };
+  const [memories, setMemories] = useState(AppDataManager.getInstance().getData());
+  const [currentCategory, setCurrentCategory] = useState(categories.find(item=>item.type==='All memories'));
 
   return (
     <AppGradientScreen gradientEnd={{x:1, y:0.3}}>
@@ -59,7 +54,7 @@ function MemoryScreen({navigation}) {
             style={{width: 332}}
             data={memories}
             refreshing={refreshing}
-            onRefresh={() => setMemories(AppMemoryData.memories)}
+            onRefresh={() => {setMemories(AppDataManager.getInstance().getData())}}
             renderItem={({item}) => (
               <AppMemoryCard 
                 category={item.category}
@@ -74,7 +69,10 @@ function MemoryScreen({navigation}) {
                       iconType="material-community"
                       size={50}
                       color={AppCategoryColors.red}
-                      onPress={()=>deleteMemories(item)} />
+                      onPress={()=>{
+                        AppDataManager.getInstance().deleteMemory(item.id);
+                        setMemories(AppDataManager.getInstance().getData());
+                      }} />
                   </View>
                 )}
                 />
