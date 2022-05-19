@@ -73,6 +73,7 @@ function LoginScreen( {navigation} ) {
               <View style={styles.inputContainer}>
                 <AppTextInput 
                   placeholder="Email address"
+                  placeholderTextColor={AppColors.darkGray}
                   keyboardType="email-address"
                   textContentType="emailAddress"
                   value={values.email}
@@ -84,6 +85,7 @@ function LoginScreen( {navigation} ) {
               <View style={styles.inputContainer}>
                 <AppTextInput 
                   placeholder="Password"
+                  placeholderTextColor={AppColors.darkGray}
                   secureTextEntry={true}
                   textContentType="password"
                   value={values.password}

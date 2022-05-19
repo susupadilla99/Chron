@@ -42,6 +42,7 @@ function RegisterScreen( {navigation} ) {
             size={60} 
             color={AppColors.lightBlue}
             />
+          <View style={{flex:1}}/> 
         </View>
 
         <View style={styles.midContainer}>
@@ -64,6 +65,7 @@ function RegisterScreen( {navigation} ) {
               <View style={styles.inputContainer}>
                 <AppTextInput
                   placeholder="Full name"
+                  placeholderTextColor={AppColors.darkGray}
                   textContentType="name"
                   onBlur={()=>{setFieldTouched("name")}}
                   onChangeText={handleChange("name")}
@@ -73,6 +75,7 @@ function RegisterScreen( {navigation} ) {
               <View style={styles.inputContainer}>
                 <AppTextInput
                   placeholder="Email address"
+                  placeholderTextColor={AppColors.darkGray}
                   keyboardType="email-address"
                   textContentType="emailAddress"
                   onBlur={()=>{setFieldTouched("email")}}
@@ -83,6 +86,7 @@ function RegisterScreen( {navigation} ) {
               <View style={styles.inputContainer}>
                 <AppTextInput
                   placeholder="Username"
+                  placeholderTextColor={AppColors.darkGray}
                   textContentType="username"
                   onBlur={()=>{setFieldTouched("username")}}
                   onChangeText={handleChange("username")}
@@ -92,6 +96,7 @@ function RegisterScreen( {navigation} ) {
               <View style={styles.inputContainer}>
                 <AppTextInput
                   placeholder="Password"
+                  placeholderTextColor={AppColors.darkGray}
                   secureTextEntry={true}
                   textContentType="password"
                   onBlur={()=>{setFieldTouched("password")}}
@@ -102,6 +107,7 @@ function RegisterScreen( {navigation} ) {
               <View style={styles.inputContainer}>
                 <AppTextInput
                   placeholder="Confirm Password"
+                  placeholderTextColor={AppColors.darkGray}
                   secureTextEntry={true}
                   textContentType="password"
                   onBlur={()=>{setFieldTouched("cfpassowrd")}}
@@ -144,8 +150,9 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   logo: {
+    flex: 1,
+    marginLeft: 50,
     alignSelf: 'center',
-    marginLeft: 117,
   },
   inputContainer: {
     flex:0.6,
