@@ -41,7 +41,7 @@
   "jest": {
     "preset": "react-native",
     "transformIgnorePatterns": [
-      "node_modules/(?!(@react-native|react-native)/)"
+      "node_modules/(?!(@react-native|react-native|expo-constants|expo-modules-core|expo-font)/)"
     ]
   },
   "private": true
