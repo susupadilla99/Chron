@@ -63,6 +63,7 @@ function RegisterScreen( {navigation} ) {
               <>
               <View style={styles.inputContainer}>
                 <AppTextInput
+                  placeholderTextColor={AppColors.darkGray}
                   placeholder="Full name"
                   textContentType="name"
                   onBlur={()=>{setFieldTouched("name")}}
@@ -72,6 +73,7 @@ function RegisterScreen( {navigation} ) {
               </View>
               <View style={styles.inputContainer}>
                 <AppTextInput
+                  placeholderTextColor={AppColors.darkGray}
                   placeholder="Email address"
                   keyboardType="email-address"
                   textContentType="emailAddress"
@@ -82,6 +84,7 @@ function RegisterScreen( {navigation} ) {
               </View>
               <View style={styles.inputContainer}>
                 <AppTextInput
+                  placeholderTextColor={AppColors.darkGray}
                   placeholder="Username"
                   textContentType="username"
                   onBlur={()=>{setFieldTouched("username")}}
@@ -91,6 +94,7 @@ function RegisterScreen( {navigation} ) {
               </View>
               <View style={styles.inputContainer}>
                 <AppTextInput
+                  placeholderTextColor={AppColors.darkGray}
                   placeholder="Password"
                   secureTextEntry={true}
                   textContentType="password"
@@ -101,6 +105,7 @@ function RegisterScreen( {navigation} ) {
               </View>
               <View style={styles.inputContainer}>
                 <AppTextInput
+                  placeholderTextColor={AppColors.darkGray}
                   placeholder="Confirm Password"
                   secureTextEntry={true}
                   textContentType="password"
@@ -145,7 +150,8 @@ const styles = StyleSheet.create({
   },
   logo: {
     alignSelf: 'center',
-    marginLeft: 117,
+    flex: 2,
+    marginLeft: 40,
   },
   inputContainer: {
     flex:0.6,

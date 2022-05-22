@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
-    }
+    },
+    "description": "A memory collection application built for a Uni Assignment",
+    "githubUrl": "https://github.com/susupadilla99/Chron"
   }
 }
