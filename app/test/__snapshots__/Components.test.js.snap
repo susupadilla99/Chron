@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppScreen 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#F8F8F8",
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#F8F8F8",
+        "flex": 1,
+        "flexDirection": "column",
+        "marginTop": undefined,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000000",
+            "fontFamily": "Avenir",
+            "fontSize": 20,
+          },
+          Object {
+            "color": undefined,
+            "fontSize": undefined,
+          },
+          undefined,
+        ]
+      }
+    >
+      Hi mom!
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`AppText 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "color": "#000000",
+        "fontFamily": "Avenir",
+        "fontSize": 20,
+      },
+      Object {
+        "color": "#EAEAEA",
+        "fontSize": 30,
+      },
+      Object {
+        "textDecorationLine": "underline",
+      },
+    ]
+  }
+>
+  Hi mom!
+</Text>
+`;
